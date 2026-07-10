@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardTilt();
     initParallaxOrbs();
     initMagneticButtons();
+    initScrollDepth();
+    initPointerGlow();
   }
 });
 
@@ -150,11 +152,12 @@ function initSmoothAnchors() {
   });
 }
 
-/* 3D hero scene — follows mouse */
+/* 3D hero scene — follows mouse with depth layers */
 function initHero3D() {
   const showcase = document.getElementById('heroShowcase');
   const stage = showcase?.querySelector('.hero-showcase__stage');
   const phone = showcase?.querySelector('[data-tilt-phone]');
+  const orbit = showcase?.querySelector('.hero-orbit');
   if (!showcase || !stage || !phone) return;
   if (window.innerWidth < 1024) return;
 
@@ -165,33 +168,45 @@ function initHero3D() {
   let currentY = 0;
 
   const render = () => {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
 
     const t = performance.now() / 1000;
-    const idleY = Math.sin(t * 0.8) * 6;
-    const idleRot = Math.sin(t * 0.5) * 1.5;
+    const idleY = Math.sin(t * 0.9) * 8;
+    const idleRot = Math.sin(t * 0.55) * 2.2;
+    const idleX = Math.cos(t * 0.4) * 1.2;
 
     stage.style.transform = `
-      perspective(1200px)
-      rotateY(${currentX * 8 + idleRot}deg)
-      rotateX(${-currentY * 6}deg)
-      translateY(${idleY * 0.3}px)
+      perspective(1400px)
+      rotateY(${currentX * 14 + idleRot}deg)
+      rotateX(${-currentY * 10 + idleX}deg)
+      translateY(${idleY * 0.25}px)
+      translateZ(${Math.abs(currentX) * 20}px)
     `;
 
     phone.style.transform = `
-      translateZ(40px)
-      rotateY(${currentX * 4}deg)
-      rotateX(${-currentY * 3}deg)
+      translateZ(${60 + Math.abs(currentY) * 30}px)
+      rotateY(${currentX * 7}deg)
+      rotateX(${-currentY * 5}deg)
       translateY(${idleY}px)
+      scale(${1 + Math.abs(currentX) * 0.02})
     `;
+
+    if (orbit) {
+      orbit.style.transform = `
+        translateZ(${-40 + currentX * 20}px)
+        rotateY(${currentX * -6}deg)
+        rotateX(${currentY * 4}deg)
+      `;
+    }
 
     const badge = showcase.querySelector('.sync-badge');
     if (badge) {
       badge.style.transform = `
-        translateZ(60px)
-        translateY(${currentY * 10 - idleY * 0.5}px)
-        translateX(${currentX * 14}px)
+        translateZ(${90 + Math.abs(currentX) * 20}px)
+        translateY(${currentY * 16 - idleY * 0.6}px)
+        translateX(${currentX * 22}px)
+        rotateY(${currentX * -8}deg)
       `;
     }
 
@@ -212,44 +227,92 @@ function initHero3D() {
   raf = requestAnimationFrame(render);
 }
 
-/* Soft 3D tilt on cards */
+/* Soft 3D tilt on cards — lerped, with layered icons */
 function initCardTilt() {
   if (window.innerWidth < 768) return;
 
   const cards = document.querySelectorAll(
-    '.feature-card, .step-card, .pricing-card, .compare-card, .problem-card, .demo-chat .phone-mockup'
+    '.feature-card, .step-card, .pricing-card, .compare-card, .problem-card, .demo-chat .phone-mockup, .credibility-item'
   );
 
   cards.forEach(card => {
     card.classList.add('card-3d');
 
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      const rotX = (0.5 - y) * 10;
-      const rotY = (x - 0.5) * 12;
-
-      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.02)`;
-
-      const glare = card.querySelector('.card-3d__glare');
-      if (glare) {
-        glare.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.35), transparent 55%)`;
-        glare.style.opacity = '1';
-      }
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-      const glare = card.querySelector('.card-3d__glare');
-      if (glare) glare.style.opacity = '0';
-    });
+    let raf = null;
+    let targetRX = 0;
+    let targetRY = 0;
+    let currentRX = 0;
+    let currentRY = 0;
+    let targetX = 0.5;
+    let targetY = 0.5;
+    let hovering = false;
 
     if (!card.querySelector('.card-3d__glare')) {
       const glare = document.createElement('div');
       glare.className = 'card-3d__glare';
       card.appendChild(glare);
     }
+
+    const glare = card.querySelector('.card-3d__glare');
+    const icon = card.querySelector(
+      '.feature-card__icon, .step-card__icon, .problem-card__icon, .credibility-item__icon'
+    );
+
+    const tick = () => {
+      currentRX += (targetRX - currentRX) * 0.14;
+      currentRY += (targetRY - currentRY) * 0.14;
+
+      if (hovering) {
+        card.style.transform = `
+          perspective(900px)
+          rotateX(${currentRX}deg)
+          rotateY(${currentRY}deg)
+          translateY(-10px)
+          translateZ(18px)
+          scale(1.035)
+        `;
+
+        if (glare) {
+          glare.style.background = `radial-gradient(circle at ${targetX * 100}% ${targetY * 100}%, rgba(255,255,255,0.45), transparent 50%)`;
+          glare.style.opacity = '1';
+        }
+
+        if (icon) {
+          icon.style.transform = `
+            translateZ(42px)
+            scale(1.16)
+            rotateY(${currentRY * -0.6}deg)
+            rotateX(${currentRX * 0.5}deg)
+          `;
+        }
+      }
+
+      if (hovering || Math.abs(currentRX - targetRX) > 0.05 || Math.abs(currentRY - targetRY) > 0.05) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = null;
+      }
+    };
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      targetX = (e.clientX - rect.left) / rect.width;
+      targetY = (e.clientY - rect.top) / rect.height;
+      targetRX = (0.5 - targetY) * 16;
+      targetRY = (targetX - 0.5) * 20;
+      hovering = true;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      hovering = false;
+      targetRX = 0;
+      targetRY = 0;
+      card.style.transform = '';
+      if (glare) glare.style.opacity = '0';
+      if (icon) icon.style.transform = '';
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
   });
 }
 
@@ -266,8 +329,9 @@ function initParallaxOrbs() {
     requestAnimationFrame(() => {
       const y = window.scrollY;
       orbs.forEach((orb, i) => {
-        const speed = 0.08 + i * 0.04;
-        orb.style.transform = `translateY(${y * speed}px)`;
+        const speed = 0.1 + i * 0.05;
+        const drift = Math.sin(y * 0.002 + i) * 20;
+        orb.style.transform = `translateY(${y * speed}px) translateX(${drift}px) scale(${1 + i * 0.02})`;
       });
       ticking = false;
     });
@@ -283,11 +347,83 @@ function initMagneticButtons() {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.2 - 2}px)`;
+      btn.style.transform = `translate(${x * 0.22}px, ${y * 0.28 - 4}px) scale(1.04)`;
     });
 
     btn.addEventListener('mouseleave', () => {
       btn.style.transform = '';
     });
+  });
+}
+
+/* Scroll-linked 3D depth — no opacity fade */
+function initScrollDepth() {
+  if (window.innerWidth < 1024) return;
+
+  const layers = document.querySelectorAll(
+    '.features-grid, .steps-grid, .compare-grid, .pricing-plans, .demo-grid, .solution__flow'
+  );
+  if (!layers.length) return;
+
+  let ticking = false;
+
+  const update = () => {
+    const vh = window.innerHeight;
+    layers.forEach((el, i) => {
+      const rect = el.getBoundingClientRect();
+      const mid = rect.top + rect.height / 2;
+      const progress = (mid - vh / 2) / vh;
+      const clamped = Math.max(-1, Math.min(1, progress));
+      const rotX = clamped * -4;
+      const rotY = Math.sin(clamped * Math.PI) * (i % 2 === 0 ? 2.5 : -2.5);
+      el.style.transform = `perspective(1400px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+
+  update();
+}
+
+/* Soft pointer glow following cursor on dark CTA */
+function initPointerGlow() {
+  if (window.innerWidth < 1024) return;
+
+  const cta = document.querySelector('.cta-section');
+  if (!cta) return;
+
+  const glow = document.createElement('div');
+  glow.setAttribute('aria-hidden', 'true');
+  Object.assign(glow.style, {
+    position: 'absolute',
+    width: '420px',
+    height: '420px',
+    borderRadius: '50%',
+    pointerEvents: 'none',
+    background: 'radial-gradient(circle, rgba(37,211,102,0.22) 0%, transparent 70%)',
+    transform: 'translate(-50%, -50%)',
+    left: '50%',
+    top: '50%',
+    zIndex: '0',
+    transition: 'opacity 0.4s ease',
+    opacity: '0',
+  });
+  cta.style.position = 'relative';
+  cta.appendChild(glow);
+
+  cta.addEventListener('mousemove', (e) => {
+    const rect = cta.getBoundingClientRect();
+    glow.style.left = `${e.clientX - rect.left}px`;
+    glow.style.top = `${e.clientY - rect.top}px`;
+    glow.style.opacity = '1';
+  });
+
+  cta.addEventListener('mouseleave', () => {
+    glow.style.opacity = '0';
   });
 }

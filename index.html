@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SUPAI — הוואטסאפ של החנות עונה, משנה ומבטל הזמנות. גם בלילה.">
+  <title>SUPAI — הוואטסאפ של החנות עונה, משנה ומבטל הזמנות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <span class="logo__icon">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+            <rect width="34" height="34" rx="10" fill="url(#logoGrad)"/>
+            <path d="M9 17c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8c-1.4 0-2.7-.4-3.8-1l-3.2 1 1-3.2C9.4 19.7 9 18.4 9 17z" fill="#fff"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="34" y2="34">
+                <stop stop-color="#25D366"/>
+                <stop offset="1" stop-color="#95BF47"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo__text">SUPAI</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#features" class="nav__link">פיצ'רים</a>
+        <a href="#how-it-works" class="nav__link">איך זה עובד</a>
+        <a href="#pricing" class="nav__link">תמחור</a>
+        <a href="#faq" class="nav__link">שאלות נפוצות</a>
+        <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" class="btn btn--primary btn--sm nav__cta" target="_blank" rel="noopener noreferrer">שמרו מקום — חיבור ב־5 דקות</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="פתח תפריט" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__particles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <div class="hero__eyebrow">
+            <span class="pill pill--live"><span class="pill__dot"></span>בקרוב ב־Shopify · שבוע ניסיון</span>
+          </div>
+          <h1 class="hero__title">
+            לקוח כתב בוואטסאפ. לא קיבל תשובה.
+            <span class="text-gradient">קנה אצל המתחרה.</span>
+          </h1>
+          <p class="hero__subtitle">לקוח כותב בוואטסאפ. SUPAI עונה מהנתונים של החנות — ואם צריך, משנה או מבטל הזמנה. גם ב־23:00.</p>
+          <div class="hero__actions">
+            <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 1.5L2.25 5.25v7.5L9 16.5l6.75-3.75v-7.5L9 1.5z" stroke="currentColor" stroke-width="1.2"/></svg>
+              שמרו מקום — חיבור ב־5 דקות
+            </a>
+            <a href="#how-it-works" class="btn btn--ghost btn--lg">תראו את 3 השלבים</a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal reveal--delay">
+          <div class="hero-showcase" id="heroShowcase">
+            <div class="hero-showcase__stage">
+              <div class="phone-mockup phone-mockup--hero" data-tilt-phone>
+                <div class="phone-mockup__glow"></div>
+                <div class="phone-mockup__frame">
+                  <div class="phone-mockup__notch"></div>
+                  <div class="phone-mockup__screen">
+                    <div class="wa-header">
+                      <div class="wa-header__avatar">S</div>
+                      <div class="wa-header__info">
+                        <span class="wa-header__name">SUPAI</span>
+                        <span class="wa-header__status">מחובר · סוגר עניינים</span>
+                      </div>
+                    </div>
+                    <div class="wa-chat" id="heroChat">
+                      <div class="wa-bubble wa-bubble--incoming wa-bubble--animate">
+                        <p>היי, איפה ההזמנה שלי?</p>
+                        <span class="wa-bubble__time">14:32</span>
+                      </div>
+                      <div class="wa-bubble wa-bubble--outgoing" id="heroReply">
+                        <p id="heroReplyText"></p>
+                        <span class="wa-bubble__time">14:32 ✓✓</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sync-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8a6 6 0 0110.5-4M14 8a6 6 0 01-10.5 4" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2v3h-3M4 14v-3h3" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>מחובר לנתוני החנות</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-bar">
+        <div class="container trust-bar__inner reveal">
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l2 1v4l2 1 2-1V3l2-1-6-2-6 2 2 1v4l2 1 2-1V3l2-1z" stroke="#95BF47" stroke-width="1.2"/><rect x="4" y="9" width="12" height="8" rx="2" stroke="#95BF47" stroke-width="1.2"/></svg>
+            <span>לחנויות Shopify</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4" y="9" width="12" height="9" rx="2" stroke="#25D366" stroke-width="1.2"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#25D366" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>מצבי אישור בהגדרות</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="#25D366" stroke-width="1.2"/><path d="M7 10l2 2 4-4" stroke="#25D366" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>מהחנות — לא מניחושים</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="#25D366" stroke-width="1.2"/><path d="M10 6v4l3 2" stroke="#25D366" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>גם בלילה</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z" stroke="#95BF47" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            <span>בלי קוד</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section section--alt" id="problem">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">הבעיה</span>
+          <h2 class="section__title">אתם עונים על אותה שאלה. שוב. ושוב.</h2>
+          <p class="section__desc">הלקוח מחכה. אתם בשינה / במשלוחים / בפרסום. בינתיים הוא קונה אצל מי שענה.</p>
+        </div>
+        <div class="problem-grid reveal">
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="5" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h16M7 13h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <p>"איפה ההזמנה שלי?"</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 11h3l2-6 3 12 2-6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>"מה מספר המעקב?"</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <p>"מתי המשלוח מגיע?"</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M7 7l8 8M15 7l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="3" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <p>"אפשר להחזיר את המוצר?"</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 3L4 6v13a1 1 0 001 1h12a1 1 0 001-1V6l-2-3H6z" stroke="currentColor" stroke-width="1.5"/><path d="M4 6h16M9 10a2 2 0 004 0" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <p>"יש את זה במלאי?"</p>
+          </div>
+        </div>
+        <p class="problem__cta reveal">במקום לענות על זה ידנית כל יום — <strong>SUPAI עונה — ואם צריך, גם משנה או מבטל את ההזמנה.</strong></p>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="section" id="solution">
+      <div class="container">
+        <div class="solution__inner reveal">
+          <div class="solution__content">
+            <span class="section__label">מה משתנה</span>
+            <h2 class="section__title">לא עוד בוט שרק מדבר. נציג שסוגר עניינים.</h2>
+            <p class="section__desc">מזהה את הלקוח מהטלפון. שולף הזמנה, מלאי ומדיניות מהחנות. עונה בוואטסאפ. ואם הוא מבקש — משנה או מבטל הזמנה. בהגדרות אתם כותבים הנחיות שמתאימות אותו לחנות — ובוחרים כמה שליטה לשמור בידיים שלכם.</p>
+            <ul class="solution__list">
+              <li>
+                <span class="solution__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+                משנה ומבטל הזמנות — לא רק עונה
+              </li>
+              <li>
+                <span class="solution__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+                בהגדרות: הנחיות שמתאימות אותו לחנות שלכם
+              </li>
+              <li>
+                <span class="solution__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+                מצב אישור: מאשרים תשובה או שינוי הזמנה — ורק אז זה יוצא
+              </li>
+            </ul>
+          </div>
+          <div class="solution__flow">
+            <div class="flow-step">
+              <div class="flow-step__icon flow-step__icon--shopify">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#95BF47" stroke-width="1.5"/></svg>
+              </div>
+              <div class="flow-step__text">
+                <strong>Shopify</strong>
+                <span>נתוני הזמנות, מלאי ומשלוחים</span>
+              </div>
+            </div>
+            <div class="flow-step__connector"></div>
+            <div class="flow-step flow-step--highlight">
+              <div class="flow-step__icon flow-step__icon--supai">AI</div>
+              <div class="flow-step__text">
+                <strong>SUPAI</strong>
+                <span>מזהה · עונה · משנה הזמנה</span>
+              </div>
+            </div>
+            <div class="flow-step__connector"></div>
+            <div class="flow-step">
+              <div class="flow-step__icon flow-step__icon--whatsapp">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.1 2 11.2c0 1.8.5 3.5 1.4 5L2 22l6-1.3c1.4.8 3 1.2 4.6 1.2 5.5 0 10-4.1 10-9.2S17.5 2 12 2z" fill="#25D366"/></svg>
+              </div>
+              <div class="flow-step__text">
+                <strong>WhatsApp</strong>
+                <span>הלקוח מקבל מענה — או עדכון הזמנה</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section section--alt" id="features">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">פיצ'רים</span>
+          <h2 class="section__title">מה קורה בפועל בוואטסאפ</h2>
+          <p class="section__desc">ההבדל: בוט שעונה מול נציג שסוגר. SUPAI עושה את שניהם — ואתם קובעים בהגדרות כמה שליטה לשמור.</p>
+        </div>
+        <div class="features-grid reveal">
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.5 2 2 5.6 2 10c0 1.6.5 3.1 1.3 4.4L2 20l5.7-1.1c1.2.7 2.6 1.1 4 1.1 5.5 0 9-3.6 9-8.2S16.5 2 11 2z" fill="#25D366"/></svg>
+            </div>
+            <h3>שואלים ב־23:00</h3>
+            <p>לקוח שואל "איפה ההזמנה?" — ומקבל מעקב מדויק. בלעדיכם.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--shopify">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="12" rx="2" stroke="#95BF47" stroke-width="1.5"/><path d="M3 9h16M7 13h5" stroke="#95BF47" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>סטטוס מהחנות</h3>
+            <p>"ההזמנה בדרך" — מה־Shopify, לא מניחוש.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h3l2-6 4 12 2-6h7" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>מספר מעקב בשנייה</h3>
+            <p>בלי לחפש באדמין. בלי להעתיק. נשלח בוואטסאפ.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--shopify">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 3L4 6v13a1 1 0 001 1h12a1 1 0 001-1V6l-2-3H6z" stroke="#95BF47" stroke-width="1.5"/><path d="M4 6h16M10 10a2 2 0 004 0" stroke="#95BF47" stroke-width="1.5"/></svg>
+            </div>
+            <h3>יש במלאי?</h3>
+            <p>שואלים על מידה/צבע — מקבלים תשובה מהמלאי העדכני.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 0114 0" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>החזרות בלי ויכוח</h3>
+            <p>מסביר את המדיניות שלכם. ברור. כמו שכתבתם בחנות.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#25D366" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>אתם נכנסים בקליק</h3>
+            <p>שיחה מסתבכת? נציג אנושי משתלט מיד. בלי דרמה.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--shopify">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18 9 9 0 000-18z" stroke="#95BF47" stroke-width="1.5"/><path d="M8 13s1.5 2 3 2 3-2 3-2M8.5 9h.01M13.5 9h.01" stroke="#95BF47" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>משנים ומבטלים — לפי מה שאישרתם</h3>
+            <p>בהגדרות בוחרים: רץ לבד, או שאתם מאשרים ביטולים ושינויי הזמנה לפני שהם קורים בחנות.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M12 2L4 13h6l-1 7 9-12h-6l1-6z" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>הנחיות שמתאימות אותו לחנות</h3>
+            <p>כותבים בהגדרות איך לדבר, מה מותר ומה אסור. הוא מתאים את עצמו אליכם — לא לתבנית גנרית.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="14" rx="2" stroke="#25D366" stroke-width="1.5"/><path d="M7 9h8M7 13h5" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>מצב אישור לפני שליחה</h3>
+            <p>רוצים לראות לפני שהלקוח מקבל? מצב אישור — אתם מאשרים את התשובה, ורק אז היא נשלחת.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="section" id="before-after">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">לפני ואחרי</span>
+          <h2 class="section__title">לפני: אתם עונים. אחרי: העניינים נסגרים.</h2>
+        </div>
+        <div class="compare-grid reveal">
+          <div class="compare-card compare-card--before">
+            <div class="compare-card__label">לפני SUPAI</div>
+            <ul class="compare-card__list">
+              <li>
+                <span class="compare-card__x">✕</span>
+                אותה שאלה 40 פעם ביום
+              </li>
+              <li>
+                <span class="compare-card__x">✕</span>
+                לקוח מחכה — ועוזב
+              </li>
+              <li>
+                <span class="compare-card__x">✕</span>
+                אתם כותבים ידנית בלילה
+              </li>
+              <li>
+                <span class="compare-card__x">✕</span>
+                אין זמן למכירות
+              </li>
+            </ul>
+          </div>
+          <div class="compare-card compare-card--after">
+            <div class="compare-card__label">אחרי SUPAI</div>
+            <ul class="compare-card__list">
+              <li>
+                <span class="compare-card__check">✓</span>
+                תשובה + מעקב מיד
+              </li>
+              <li>
+                <span class="compare-card__check">✓</span>
+                ביטולים ושינויים — אוטומטי או רק אחרי אישור שלכם
+              </li>
+              <li>
+                <span class="compare-card__check">✓</span>
+                הנחיות בהגדרות שמתאימות אותו לחנות
+              </li>
+              <li>
+                <span class="compare-card__check">✓</span>
+                נציג נכנס רק כשצריך
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section section--alt" id="how-it-works">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">איך זה עובד</span>
+          <h2 class="section__title">3 שלבים. בלי קוד.</h2>
+          <p class="section__desc">מהחנות לשופיפיי לוואטסאפ — וזה רץ.</p>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step-card">
+            <div class="step-card__number">1</div>
+            <div class="step-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3L4 8v12l10 5 10-5V8L14 3z" stroke="#95BF47" stroke-width="1.5"/></svg>
+            </div>
+            <h3>מתקינים מ־Shopify</h3>
+            <p>חפשו את SUPAI, לחצו התקנה, אשרו הרשאות.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card__number">2</div>
+            <div class="step-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2C7.4 2 2 6.9 2 12.8c0 2 .6 3.9 1.6 5.5L2 26l8.2-1.5c1.5.8 3.2 1.3 4.8 1.3 6.6 0 12-4.9 12-10.8S20.6 2 14 2z" fill="#25D366"/></svg>
+            </div>
+            <h3>מחברים את הוואטסאפ של העסק</h3>
+            <p>מספר ה־WhatsApp Business שלכם — וזה מתחיל לקבל הודעות.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card__number">3</div>
+            <div class="step-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#25D366" stroke-width="1.5"/><path d="M10 14l3 3 5-5" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>כותבים הנחיות ובוחרים מצב אישור</h3>
+            <p>בהגדרות מתאימים אותו לחנות. רוצים לאשר תשובות או ביטולים לפני שהם יוצאים? יש מצב לזה.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat Demo -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">דוגמה</span>
+          <h2 class="section__title">שתי שיחות. בלי נציג על הקו.</h2>
+          <p class="section__desc">תשובה מהחנות — לא תבנית.</p>
+        </div>
+        <div class="demo-grid reveal">
+          <div class="demo-chat">
+            <div class="demo-chat__label">שאלת הזמנה</div>
+            <div class="phone-mockup phone-mockup--demo">
+              <div class="phone-mockup__frame">
+                <div class="phone-mockup__notch"></div>
+                <div class="phone-mockup__screen">
+                  <div class="wa-header">
+                    <div class="wa-header__avatar">S</div>
+                    <div class="wa-header__info">
+                      <span class="wa-header__name">SUPAI</span>
+                      <span class="wa-header__status">מחובר</span>
+                    </div>
+                  </div>
+                  <div class="wa-chat">
+                    <div class="wa-date">היום</div>
+                    <div class="wa-bubble wa-bubble--incoming">
+                      <p>היי, איפה ההזמנה שלי?</p>
+                      <span class="wa-bubble__time">14:32</span>
+                    </div>
+                    <div class="wa-bubble wa-bubble--outgoing">
+                      <p>מצאתי את ההזמנה שלך. ההזמנה <strong>#1045</strong> כבר נשלחה ונמצאת בדרך אליך. מספר המעקב: <strong>123456789</strong>. זמן הגעה משוער: <strong>2–4 ימי עסקים</strong>.</p>
+                      <span class="wa-bubble__time">14:32 ✓✓</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-chat">
+            <div class="demo-chat__label">שאלת מלאי</div>
+            <div class="phone-mockup phone-mockup--demo">
+              <div class="phone-mockup__frame">
+                <div class="phone-mockup__notch"></div>
+                <div class="phone-mockup__screen">
+                  <div class="wa-header">
+                    <div class="wa-header__avatar">S</div>
+                    <div class="wa-header__info">
+                      <span class="wa-header__name">SUPAI</span>
+                      <span class="wa-header__status">מחובר</span>
+                    </div>
+                  </div>
+                  <div class="wa-chat">
+                    <div class="wa-date">היום</div>
+                    <div class="wa-bubble wa-bubble--incoming">
+                      <p>החולצה השחורה במידה M במלאי?</p>
+                      <span class="wa-bubble__time">16:10</span>
+                    </div>
+                    <div class="wa-bubble wa-bubble--outgoing">
+                      <p>כן, במידה M יש במלאי. רוצה קישור להזמנה?</p>
+                      <span class="wa-bubble__time">16:10 ✓✓</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credibility -->
+    <section class="section section--dark" id="credibility">
+      <div class="container">
+        <div class="credibility-grid reveal">
+          <div class="credibility-item">
+            <div class="credibility-item__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3L5 8v12l9 5 9-5V8L14 3z" stroke="#95BF47" stroke-width="1.5"/></svg>
+            </div>
+            <h3>לחיות Shopify</h3>
+            <p>תוסף שמתחבר ישירות לחנות שלכם</p>
+          </div>
+          <div class="credibility-item">
+            <div class="credibility-item__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="13" width="16" height="12" rx="2" stroke="#25D366" stroke-width="1.5"/><path d="M10 13v-3a4 4 0 018 0v3" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>אתם קובעים את רמת השליטה</h3>
+            <p>הנחיות לחנות, מצב אישור לתשובות, ואישור לשינויי הזמנה — הכל בהגדרות</p>
+          </div>
+          <div class="credibility-item">
+            <div class="credibility-item__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#25D366" stroke-width="1.5"/><path d="M10 14l3 3 5-5" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>רק נתוני החנות</h3>
+            <p>תשובות ופעולות מהמידע האמיתי שלכם</p>
+          </div>
+          <div class="credibility-item">
+            <div class="credibility-item__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#25D366" stroke-width="1.5"/><path d="M14 9v5l3 2" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>רץ כשאתם לא</h3>
+            <p>מענה וסגירת עניינים גם בלילה</p>
+          </div>
+          <div class="credibility-item">
+            <div class="credibility-item__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M15 3L5 15h7l-1 10 11-14h-7l1-8z" stroke="#95BF47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>בלי מפתח</h3>
+            <p>התקנה מ־Shopify. בלי קוד.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section--alt" id="pricing">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">תמחור</span>
+          <h2 class="section__title">מחיר אחד. הכל בפנים.</h2>
+          <p class="section__desc">שבוע ניסיון. בלי התחייבות. חודשי או שנתי.</p>
+        </div>
+
+        <div class="pricing-single reveal">
+          <div class="pricing-trial">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="#25D366" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span><strong>7 ימי ניסיון חינם</strong> — בלי תשלום מראש</span>
+          </div>
+
+          <div class="pricing-plans">
+            <div class="pricing-card">
+              <div class="pricing-card__header">
+                <h3>חודשי</h3>
+                <p class="pricing-card__desc">חיוב חודשי — בלי התחייבות</p>
+              </div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__currency">$</span>
+                <span class="pricing-card__amount">39</span>
+              </div>
+              <p class="pricing-card__note">לחודש</p>
+              <ul class="pricing-card__features">
+                <li>תמיכה בצ'אט 24/7</li>
+                <li>שיחות ותגובות ללא הגבלה</li>
+                <li>הנחיות ומצבי אישור בהגדרות</li>
+                <li>ללא דמי הקמה</li>
+                <li>חיבור עד 18 שפות</li>
+              </ul>
+              <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" class="btn btn--outline-green btn--block" target="_blank" rel="noopener noreferrer">שוחח מקוון — חיבור ב־2 דקות</a>
+            </div>
+
+            <div class="pricing-card pricing-card--popular">
+              <div class="pricing-card__badge">הכי משתלם</div>
+              <div class="pricing-card__header">
+                <h3>שנתי</h3>
+                <p class="pricing-card__desc">חיוב פעם בשנה — חיסכון של 25%</p>
+              </div>
+              <div class="pricing-card__save">חוסכים $118</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__currency">$</span>
+                <span class="pricing-card__amount">350</span>
+              </div>
+              <p class="pricing-card__note">רק <strong>$29 לחודש</strong> במקום $39</p>
+              <ul class="pricing-card__features">
+                <li>תמיכה בצ'אט 24/7</li>
+                <li>שיחות ותגובות ללא הגבלה</li>
+                <li>הנחיות ומצבי אישור בהגדרות</li>
+                <li>ללא דמי הקמה</li>
+                <li>חיבור עד 18 שפות</li>
+              </ul>
+              <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" class="btn btn--primary btn--block" target="_blank" rel="noopener noreferrer">שוחח מקוון — חיבור ב־2 דקות</a>
+            </div>
+          </div>
+
+          <div class="pricing-diff">
+            <div class="pricing-diff__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M4 8h14l-1.5 10H5.5L4 8z" stroke="#25D366" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M8 8V6a3 3 0 016 0v2" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M2 8h18" stroke="#25D366" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pricing-diff__text">
+              <strong>מה ההבדל?</strong>
+              <span>כל הפיצ'רים כלולים בשני המסלולים. ההבדל היחיד הוא תקופת החיוב והחיסכון בעלות.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">שאלות נפוצות</span>
+          <h2 class="section__title">שאלות שמעכבות התקנה</h2>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>האם SUPAI עובד עם כל חנות Shopify?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>כן. Basic, Shopify, Advanced ו-Plus. מתקינים מ־Shopify App Store ומתחילים.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>האם חייבים WhatsApp Business?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>כן. מתחברים למספר ה־WhatsApp Business של העסק. אין? פותחים בחינם תוך דקות.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>הוא רק עונה — או גם משנה הזמנות?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>גם וגם. עונה על סטטוס ומעקב, וגם משנה או מבטל הזמנה כשהלקוח מבקש. בהגדרות בוחרים אם זה רץ לבד או שאתם מאשרים כל שינוי לפני שהוא קורה בחנות.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>מה אם הוא יטעה?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>יש מצב אישור: אתם רואים את התשובה ומאשרים לפני שהיא נשלחת. לביטולים ושינויי הזמנה אפשר לדרוש אישור נפרד. ובכל רגע נציג אנושי נכנס לשיחה ולוקח שליטה.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>אפשר לתת לו הנחיות שיתאים את עצמו לחנות?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>כן. בהגדרות כותבים הנחיות: איך לדבר, מה מותר, מה אסור, מדיניות החזרות ועוד. הוא מתאים את עצמו לחנות שלכם — לא לתשובות גנריות.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>מה זה מצב אישור?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>מצב שבו אתם מאשרים לפני שמשהו יוצא ללקוח או משתנה בחנות. אפשר לאשר תשובות לפני שליחה, ולאשר ביטולים ושינויי הזמנה לפני שהם מתבצעים. כשאתם מוכנים — משחררים אותו לעבוד לבד.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>האם אפשר לערוך את התשובות?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>כן. בהגדרות מתאימים סגנון, מוסיפים מידע על המותג, ועורכים הנחיות להחזרות ולפעולות בחנות — הכל כלול.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>האם זה מתאים לחנויות קטנות?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>במיוחד. הרבה שאלות חוזרות, בלי צוות תמיכה — בדיוק בשביל זה.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>מסובך להתקין?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="faq-item__answer"><p>לא. התקנה מ־Shopify, בלי קוד. מחברים וואטסאפ — וזהו.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="cta">
+      <div class="cta-section__bg"></div>
+      <div class="container">
+        <div class="cta-section__inner reveal">
+          <h2>הלקוח כתב. מישהו חייב לענות — גם כשאתם לא שם.</h2>
+          <p>חברו Shopify לוואטסאפ. תשובות, שינויי הזמנה וביטולים — בלי לשבת על הטלפון.</p>
+          <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" class="btn btn--primary btn--lg btn--white" target="_blank" rel="noopener noreferrer">שמרו מקום — חיבור ב־5 דקות</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="logo">
+          <span class="logo__icon">
+            <svg width="28" height="28" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+              <rect width="34" height="34" rx="10" fill="url(#logoGrad2)"/>
+              <path d="M9 17c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8c-1.4 0-2.7-.4-3.8-1l-3.2 1 1-3.2C9.4 19.7 9 18.4 9 17z" fill="#fff"/>
+              <defs><linearGradient id="logoGrad2" x1="0" y1="0" x2="34" y2="34"><stop stop-color="#25D366"/><stop offset="1" stop-color="#95BF47"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="logo__text">SUPAI</span>
+        </a>
+        <p class="footer__tagline">וואטסאפ שעונה — וסוגר הזמנות — לחנויות Shopify</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>מוצר</h4>
+          <a href="#features">פיצ'רים</a>
+          <a href="#how-it-works">איך זה עובד</a>
+          <a href="#pricing">תמחור</a>
+        </div>
+        <div class="footer__col">
+          <h4>תמיכה</h4>
+          <a href="#faq">שאלות נפוצות</a>
+          <a href="https://wa.me/972533379325?text=%D7%90%D7%A0%D7%99%20%D7%91%D7%A4%D7%A0%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%99%20%D7%9ESUP%20AI" target="_blank" rel="noopener noreferrer">צור קשר</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SUPAI. כל הזכויות שמורות.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

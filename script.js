@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initScrollDepth();
     initPointerGlow();
+    initMobileWow();
   }
+
+  initMobileStickyCta();
 });
 
 function initMobileMenu() {
@@ -426,4 +429,76 @@ function initPointerGlow() {
   cta.addEventListener('mouseleave', () => {
     glow.style.opacity = '0';
   });
+}
+
+/* Mobile: scroll-in card rise + soft hero parallax */
+function initMobileWow() {
+  if (window.innerWidth > 768) return;
+
+  const cards = document.querySelectorAll(
+    '.feature-card, .step-card, .problem-card, .pricing-card, .compare-card, .credibility-item'
+  );
+
+  if (cards.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-inview');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+    );
+    cards.forEach(card => observer.observe(card));
+  }
+
+  const phone = document.querySelector('.phone-mockup--hero');
+  if (!phone) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        phone.style.transform = `translateY(${y * 0.12}px)`;
+      }
+      ticking = false;
+    });
+  }, { passive: true });
+}
+
+/* Mobile sticky WhatsApp CTA after leaving hero */
+function initMobileStickyCta() {
+  const bar = document.getElementById('mobileStickyCta');
+  const hero = document.getElementById('hero');
+  if (!bar || !hero) return;
+
+  if (window.innerWidth > 768) {
+    bar.hidden = true;
+    return;
+  }
+
+  bar.hidden = false;
+
+  const update = () => {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const nearFooter = window.innerHeight + window.scrollY > document.body.scrollHeight - 280;
+    bar.classList.toggle('is-visible', heroBottom < 40 && !nearFooter);
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      bar.hidden = true;
+      bar.classList.remove('is-visible');
+    } else {
+      bar.hidden = false;
+      update();
+    }
+  });
+  update();
 }

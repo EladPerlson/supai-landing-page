@@ -1615,31 +1615,13 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   Reveal Animations
+   Reveal Animations (disabled — content always visible)
    ============================================ */
 
-/* Reveal base — enhanced below in 3D section */
-.reveal--delay { transition-delay: 0.12s; }
-
-/* Stagger children */
-.features-grid.reveal--visible .feature-card,
-.problem-grid.reveal--visible .problem-card,
-.steps-grid.reveal--visible .step-card {
-  animation: staggerIn 0.5s ease forwards;
-}
-
-.features-grid .feature-card:nth-child(1), .problem-grid .problem-card:nth-child(1), .steps-grid .step-card:nth-child(1) { animation-delay: 0.05s; }
-.features-grid .feature-card:nth-child(2), .problem-grid .problem-card:nth-child(2), .steps-grid .step-card:nth-child(2) { animation-delay: 0.1s; }
-.features-grid .feature-card:nth-child(3), .problem-grid .problem-card:nth-child(3), .steps-grid .step-card:nth-child(3) { animation-delay: 0.15s; }
-.features-grid .feature-card:nth-child(4), .problem-grid .problem-card:nth-child(4) { animation-delay: 0.2s; }
-.features-grid .feature-card:nth-child(5) { animation-delay: 0.25s; }
-.features-grid .feature-card:nth-child(6) { animation-delay: 0.3s; }
-.features-grid .feature-card:nth-child(7) { animation-delay: 0.35s; }
-.features-grid .feature-card:nth-child(8) { animation-delay: 0.4s; }
-
-@keyframes staggerIn {
-  from { opacity: 0; transform: translateY(16px) rotateX(8deg); }
-  to { opacity: 1; transform: translateY(0) rotateX(0); }
+.reveal,
+.reveal--visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ============================================
@@ -1752,17 +1734,6 @@ ul { list-style: none; }
 @keyframes ctaBgShift {
   from { transform: scale(1) translateX(0); }
   to { transform: scale(1.1) translateX(20px); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(36px) scale(0.98);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
 .logo__icon {

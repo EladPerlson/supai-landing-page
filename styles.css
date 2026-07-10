@@ -1615,14 +1615,61 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   Reveal Animations (disabled — content always visible)
+   Reveal Animations — slide only (no opacity fade)
    ============================================ */
 
-.reveal,
-.reveal--visible {
+.reveal {
   opacity: 1;
+  transform: translateY(28px);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.reveal--visible {
+  transform: translateY(0);
+}
+
+.reveal--delay {
+  transition-delay: 0.12s;
+}
+
+/* Grids: stagger cards only — keep container still so motion stays clean */
+.features-grid.reveal,
+.problem-grid.reveal,
+.steps-grid.reveal {
   transform: none;
 }
+
+.features-grid.reveal .feature-card,
+.problem-grid.reveal .problem-card,
+.steps-grid.reveal .step-card {
+  transform: translateY(18px);
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.features-grid.reveal--visible .feature-card,
+.problem-grid.reveal--visible .problem-card,
+.steps-grid.reveal--visible .step-card {
+  transform: translateY(0);
+}
+
+.features-grid.reveal .feature-card:nth-child(1),
+.problem-grid.reveal .problem-card:nth-child(1),
+.steps-grid.reveal .step-card:nth-child(1) { transition-delay: 0.05s; }
+.features-grid.reveal .feature-card:nth-child(2),
+.problem-grid.reveal .problem-card:nth-child(2),
+.steps-grid.reveal .step-card:nth-child(2) { transition-delay: 0.1s; }
+.features-grid.reveal .feature-card:nth-child(3),
+.problem-grid.reveal .problem-card:nth-child(3),
+.steps-grid.reveal .step-card:nth-child(3) { transition-delay: 0.15s; }
+.features-grid.reveal .feature-card:nth-child(4),
+.problem-grid.reveal .problem-card:nth-child(4) { transition-delay: 0.2s; }
+.features-grid.reveal .feature-card:nth-child(5) { transition-delay: 0.25s; }
+.features-grid.reveal .feature-card:nth-child(6) { transition-delay: 0.3s; }
+.features-grid.reveal .feature-card:nth-child(7) { transition-delay: 0.35s; }
+.features-grid.reveal .feature-card:nth-child(8) { transition-delay: 0.4s; }
+.features-grid.reveal .feature-card:nth-child(9) { transition-delay: 0.45s; }
 
 /* ============================================
    3D Cards & Depth
@@ -1751,9 +1798,13 @@ ul { list-style: none; }
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
+  .reveal,
+  .features-grid.reveal .feature-card,
+  .problem-grid.reveal .problem-card,
+  .steps-grid.reveal .step-card {
     opacity: 1;
     transform: none;
+    transition: none;
   }
 }
 
